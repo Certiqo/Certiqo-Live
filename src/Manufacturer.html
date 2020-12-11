@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Manufacturer Suite</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link 
+      rel="stylesheet" 
+      type="text/css" 
+      href="./css/toastr.min.css" 
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/aae1a073a8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body style=" background: #F0ECE7;">
+    <div class="container py-5">
+      <a style="display:inline-block" href="index.html">
+        <button type="button" class="btn btn-danger shadow-sm">
+          <i class="fa fa-home mr-2"></i> Home
+        </button>
+      </a>
+      <!-- <button type="button" id="hash-sync" class="btn btn-warning shadow-sm">
+        <i class="fa fa-refresh mr-2"></i> Sync file hash
+      </button> -->
+      
+      <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1 class="display-4">Manufacturer</h1>
+        </div>
+      </div>
+      <!-- End -->
+
+      <div class="row">
+        <div class="col-lg-7 mx-auto">
+          <div class="bg-light rounded-lg shadow-lg p-5">
+            <!-- FDA form tabs -->
+            <ul role="tablist" class="nav b-light nav-pills nav-fill mb-3">
+              <li class="nav-item">
+                <a data-toggle="pill" href="#nav-tab-manufacture" class="nav-link rounded-pill active">
+                  <i class="fa fa-industry"></i>
+                  Manufacture Drug
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-toggle="pill" href="#nav-tab-dispatch" class="nav-link rounded-pill">
+                  <i class="fa fa-truck"></i>
+                  Dispatch To Distributor
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-toggle="pill" href="#nav-tab-status" class="nav-link rounded-pill">
+                  <i class="fa fa-info-circle"></i>
+                  Check status
+                </a>
+              </li>
+            </ul>
+            <!-- End -->
+
+            <hr/>
+
+            <!-- Tab form content -->
+            <div class="tab-content">
+
+              <!-- Manufacture drug info-->
+              <div id="nav-tab-manufacture" class="tab-pane fade show active">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  Provide 10-digit NDC in the field below.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form role="form" id="mftr-manufacture-form"> 
+                  <div class="form-group">
+                    <label for="username">10-digit NDC to Manufacture</label>
+                    <input
+                      type="text"
+                      name="username"
+                      id="mftr-manufacture-ndc"
+                      placeholder="ndc"
+                      minlength=10
+                      maxlength=10
+                      required="true"
+                      class="form-control"
+                    />
+                  </div> 
+
+                  <button type="submit" id="mftr-manufacture" class="btn btn-success btn-block rounded-pill shadow-sm">
+                    Manufacture
+                  </button>
+                </form>
+              </div>
+              <!-- End -->
+
+              <!-- dispatchToDistributor info-->
+              <div id="nav-tab-dispatch" class="tab-pane fade show">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  Provide 10-digit NDC and the unit price in the fields below.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form role="form" id="mftr-dispatch-form"> 
+                  <div class="form-group">
+                    <label for="username">10-digit NDC to Dispatch</label>
+                    <input
+                      type="text"
+                      name="username"
+                      id="mftr-dispatch-ndc"
+                      placeholder="ndc"
+                      minlength=10
+                      maxlength=10
+                      required="true"
+                      class="form-control"
+                    />
+                    <br/>
+                    <label for="username">Unit price of Drug (in Wei) - 1 eth = 1000000000000000000 wei</label>
+                    <input
+                      type="number"
+                      min="0" 
+                      name="price"
+                      id="mftr-dispatch-price"
+                      placeholder="price"
+                      required="true"
+                      class="form-control"
+                    />
+                  </div> 
+
+                  <button type="submit" id="mftr-dispatch" class="btn btn-warning btn-block rounded-pill shadow-sm">
+                    Dispatch
+                  </button>
+                </form>
+              </div>
+              <!-- End -->              
+              
+              <!-- status info -->
+              <div id="nav-tab-status" class="tab-pane fade show">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  Provide 10-digit NDC in the field below.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form role="form" id="public-status-form"> 
+                  <div class="form-group">
+                    <label for="username">10-digit NDC</label>
+                    <input
+                      type="text"
+                      name="username"
+                      id="public-status-ndc"
+                      placeholder="ndc"
+                      minlength=10
+                      maxlength=10
+                      required="true"
+                      class="form-control"
+                    />
+                  </div> 
+
+                  <button type="submit" id="public-status" class="btn btn-info btn-block rounded-pill shadow-sm">
+                    <i class="fa fa-question-circle-o mr-2"></i> get status
+                  </button>
+                </form>
+                <hr/>
+                NDC: <span id="public-ndc" class="badge badge-dark"></span><br>
+                Name: <span id="public-name" class="badge badge-dark"></span><br>
+                Drug Type: <span id="public-type" class="badge badge-dark"></span><br>
+                Status: <span id="public-currentStatus" class="badge badge-dark"></span><br>
+                Approval Date: <span id="public-date" class="badge badge-dark"></span><br>
+                Manufacturer: <span id="public-mftr" class="badge badge-dark"></span><br>
+                Distributor: <span id="public-distr" class="badge badge-dark"></span><br>
+                Pharmacist: <span id="public-phar" class="badge badge-dark"></span><br>
+                Unit Price: <span id="public-price" class="badge badge-dark"></span><br>
+              </div>
+              <!-- End -->
+
+            </div>
+            <!-- End -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- partial -->
+    <!-- footer start -->
+      <div class="text-center"> <p><b>Current Account: </b><span id="current-account"></span><br/>   
+        <b> Balance(ETH):</b> <span id='balance'> </span> </p>
+      </div>
+    <!-- footer end -->
+
+    <script src="js/dist/jquery.min.js"></script>
+    <script src="js/dist/toastr.min.js"></script>
+    <script src="js/dist/web3.min.js"></script>
+    <script src="js/dist/truffle-contract.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
